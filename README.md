@@ -1,24 +1,26 @@
 # WEB-OSS-Browser开源文档（使用教程）
 
-> 经过两个月的努力[WEB-OSS-Browser](http://home.yangrd.com/)基本开发完毕，本工具为B/S架构，直连阿里云ali-oss，不参杂任何第三方接口，不需要担心您的隐私泄露（可以参阅[源码](https://github.com/yrd688/WEB-OSS-Browser)检查API接口），WEB-OSS-Browser包括文件管理，文件复制/裁剪，二维码生成，代码编辑，图片裁剪，文件上传（断点续传），文件下载，批量获取下载地址，书签管理，图片预览，图片裁剪，后续将会更新更多实用新功能。
+> 经过两个月的努力[WEB-OSS-Browser](https://github.com/yangrds/WEB-OSS-Browser)基本开发完毕，本工具为B/S架构，直连阿里云ali-oss，不参杂任何第三方接口，不需要担心您的隐私泄露（可以参阅[源码](https://github.com/yangrds/WEB-OSS-Browser)检查API接口），WEB-OSS-Browser包括文件管理，文件复制/裁剪，二维码生成，代码编辑，图片裁剪，文件上传（断点续传），文件下载，批量获取下载地址，书签管理，图片预览，图片裁剪，后续将会更新更多实用新功能。
 
 ## 免责声明
 
 本网站所展示项目都属于 **非商业盈利行为**，其目的是为了更好的交流及讨论技术，创建更和谐的社区环境。 本网站及其所展示项目的部分设计资源均来源于网络，如果这部分资源侵犯了您的合法权益，请您第一时间联系我， 我将已最快的速度将侵犯您权益的内容下线处理。
 
-**联系方式：** yangrd_bbs@aliyun.com
+**联系方式：** yangrd@tom.com
 
 **WEB-OSS-Browser** 基于MIT协议开放源代码， 特此免费授予获得副本的任何人 软件和相关文档文件（以下简称“软件”）的交易 在软件中不受限制，包括但不限于权利 使用，复制，修改，合并，发布，分发，再许可和/或出售 本软件的副本
 
 **核心资源：** 本软件核心代码来自[ **ali-sdk/ali-oss** ](https://github.com/ali-sdk/ali-oss)您可以查看其开源代码及开源许可证
 
-**责任归属**：本人不对 **WEB-OSS-Browser** 任何时间造成的任何后果承担任何责任，在使用前请务必参阅[WEB-OSS-Browser源代码](https://github.com/yrd688/WEB-OSS-Browser)
+**责任归属**：本人不对 **WEB-OSS-Browser** 任何时间造成的任何后果承担任何责任，在使用前请务必参阅[WEB-OSS-Browser源代码](https://github.com/yangrds/WEB-OSS-Browser)
 
 本工具在UI方面参照阿里云官方OSS-Browser设计（如果涉及侵权，将会第一时间更改）
 
 **全部代码围绕着ali-sdk/ali-oss进行开发，没有抄袭OSS-Browser一个字节**，[OSS-Browser](https://github.com/aliyun/oss-browser)作为阿里云官方客户端工具（桌面程序）稳定性将是毋庸置疑的，他是WEB-OSS-Browser一直学习以及追赶的目标。
 
-## [GitHub开源地址](https://github.com/yrd688/WEB-OSS-Browser)
+## [GitHub开源地址](https://github.com/yangrds/WEB-OSS-Browser)
+
+## [项目演示](http://106.52.18.248:8005/)
 
 ## 登录WEB-OSS-Browser
 
@@ -95,4 +97,4 @@ WEB-OSS-Browser集成ACE代码编辑器，支持代码在线编辑，支持110+�
 
 点击图片的文件名即可打开文件预览界面
 
-**WEB-OSS-Browser**基本的操作就介绍到这里，更多功能可以下载源码部署，或者查看[测试案例](http://oss.yangrd.com/)
+**WEB-OSS-Browser**基本的操作就介绍到这里，更多功能可以下载源码部署，或者查看[测试案例](http://106.52.18.248:8005/)
