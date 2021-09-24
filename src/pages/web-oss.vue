@@ -36,16 +36,17 @@ export default {
 .web-oss {
   width: 100%;
   height: 100%;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
   .oss-main {
-    min-width: 1300px;
-    width: 1300px;
-    min-height: 735px;
+    width: 100%;
+    height: 100%;
     overflow: auto;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);

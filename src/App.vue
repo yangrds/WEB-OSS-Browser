@@ -1,7 +1,5 @@
 <template>
-  <div id="app">
     <Weboss />
-  </div>
 </template>
 
 <script>

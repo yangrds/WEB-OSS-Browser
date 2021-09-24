@@ -15,18 +15,13 @@ Vue.use(VueRouter)
 const routes = [
     { path: '/login', component: () => import('@/pages/login') },
     {
-        path: '/home',
+        path: '/',
         component: () => import('@/pages/home'),
         meta: {
             pageName: '首页'
         }
     },
-    { path: '/', redirect: '/home' }
 
 ]
 
-
-
-export default new VueRouter({
-    routes
-})
+export default routes

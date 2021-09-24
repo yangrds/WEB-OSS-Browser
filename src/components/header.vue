@@ -253,9 +253,11 @@ export default {
     border-radius: 50%;
   }
   .version {
+    width: 300px;
     > span:nth-child(1) {
       color: #f5f5f5;
       font-size: 18px;
+      font-weight: 700;
       font-family: "微软雅黑";
       margin-left: 10px;
     }
@@ -267,7 +269,7 @@ export default {
     }
   }
   .operation {
-    width: 1000px;
+    width: 100%;
     height: 60px;
     box-sizing: border-box;
     display: flex;

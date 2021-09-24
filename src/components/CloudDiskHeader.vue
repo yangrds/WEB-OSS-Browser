@@ -567,7 +567,6 @@ export default {
       suffix === "htm" && (icon = "#icon-chrome");
       suffix === "xml" && (icon = "#icon-xml");
       suffix === "ts" && (icon = "#icon-ts");
-
       return icon;
     },
   },

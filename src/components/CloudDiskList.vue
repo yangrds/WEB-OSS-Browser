@@ -1,31 +1,18 @@
 <template>
   <!-- 文件目录 -->
   <div class="fileList" @dragover.prevent @drop="dropFile">
-    <el-table
-      stripe
-      :data="ossList"
-      ref="fileList"
-      v-loading="loading"
-      height="600"
-      style="width: 100%"
-      @selection-change="toggleRowSelection"
-    >
+    <el-table stripe :data="ossList" ref="fileList" v-loading="loading" :max-height="tableHeight" style="width: 100%" @selection-change="toggleRowSelection">
       <el-table-column type="selection" width="34"> </el-table-column>
       <el-table-column label="名称">
         <div slot-scope="scope" class="file-name">
           <svg class="icon" aria-hidden="true">
             <use :xlink:href="suffixIconTool(scope.row)"></use>
           </svg>
-
-          <span
-            style="color: #337ab7; cursor: pointer"
-            @click="fileNameClick(scope.row)"
-            >{{ dirTitleTool(scope.row) }}</span
-          >
+          <span style="color: #337ab7; cursor: pointer" @click="fileNameClick(scope.row)">{{ dirTitleTool(scope.row) }}</span>
         </div>
       </el-table-column>
       <el-table-column prop="date" label="类型 / 大小" width="130px">
-        <span slot-scope="scope">{{
+        <span slot-scope="scope" >{{
           scope.row.dir ? "目录" : renderSize(scope.row.size)
         }}</span>
       </el-table-column>
@@ -36,52 +23,18 @@
             : dateFormat("YYYY-mm-dd HH:MM", scope.row.lastModified)
         }}</span>
       </el-table-column>
-      <el-table-column
-        prop="date"
-        label="操作"
-        width="240"
-        header-align="right"
-      >
+      <el-table-column prop="date" label="操作" width="240" header-align="right">
         <div class="ace-operation" slot-scope="scope">
-          <el-button
-            @click="getQRCode(scope.row)"
-            v-if="!scope.row.dir"
-            type="text"
-            style="font-size: 15px; font-weight: 700; color: #409eff"
-            >获取地址</el-button
-          >
+          <el-button @click="getQRCode(scope.row)" v-if="!scope.row.dir" type="text" style="font-size: 15px; font-weight: 700; color: #409eff">获取地址</el-button>
 
-          <el-button
-            @click="downloadClick(scope.row)"
-            v-if="!scope.row.dir"
-            type="text"
-            style="font-size: 15px; font-weight: 700; color: #409eff"
-            >下载</el-button
-          >
+          <el-button @click="downloadClick(scope.row)" v-if="!scope.row.dir" type="text" style="font-size: 15px; font-weight: 700; color: #409eff">下载</el-button>
 
-          <el-button
-            type="text"
-            @click="renameClick(scope.row)"
-            style="font-size: 15px; font-weight: 700; color: #888"
-            >重命名</el-button
-          >
-          <el-button
-            @click="deleteKeyTool(scope.row)"
-            type="text"
-            style="font-size: 15px; font-weight: 700; color: #f56c6c"
-            >删除</el-button
-          >
+          <el-button type="text" @click="renameClick(scope.row)" style="font-size: 15px; font-weight: 700; color: #888">重命名</el-button>
+          <el-button @click="deleteKeyTool(scope.row)" type="text" style="font-size: 15px; font-weight: 700; color: #f56c6c">删除</el-button>
         </div>
       </el-table-column>
     </el-table>
-    <el-dialog
-      title="重命名"
-      :visible.sync="renameVisible"
-      width="400px"
-      :before-close="handleClose"
-      append-to-body
-      :close-on-click-modal="false"
-    >
+    <el-dialog title="重命名" :visible.sync="renameVisible" width="400px" :before-close="handleClose" append-to-body :close-on-click-modal="false">
       <div class="rename-path">
         <span>所在目录</span>
         <span>oss://yrdbok/{{ path }}</span>
@@ -89,11 +42,7 @@
 
       <div class="rename-path">
         <span>重命名</span>
-        <el-input
-          v-model="rename.to"
-          :spellcheck="false"
-          style="width: 240px"
-        ></el-input>
+        <el-input v-model="rename.to" :spellcheck="false" style="width: 240px"></el-input>
       </div>
       <div class="mkdir-btn">
         <div class="ace-btns">
@@ -109,40 +58,19 @@
       </div>
     </el-dialog>
 
-    <el-dialog
-      title="地址详情"
-      :visible.sync="qrcodeVisible"
-      width="600px"
-      :before-close="handleClose"
-      append-to-body
-      :close-on-click-modal="false"
-    >
+    <el-dialog title="地址详情" :visible.sync="qrcodeVisible" width="600px" :before-close="handleClose" append-to-body :close-on-click-modal="false">
       <div class="text-child">
         <span>名称</span>
-        <el-input
-          :value="downloadAddress.name"
-          spellcheck="false"
-          style="width: 400px"
-          disabled
-        ></el-input>
+        <el-input :value="downloadAddress.name" spellcheck="false" style="width: 400px" disabled></el-input>
       </div>
       <div class="text-child">
         <span>地址</span>
-        <el-input
-          :value="downloadAddress.url"
-          style="width: 400px"
-          spellcheck="false"
-          ref="InputCopy"
-        />
-        <el-button style="margin-left: 10px" type="success" @click="CopyClick"
-          >复制地址</el-button
-        >
+        <el-input :value="downloadAddress.url" style="width: 400px" spellcheck="false" ref="InputCopy" />
+        <el-button style="margin-left: 10px" type="success" @click="CopyClick">复制地址</el-button>
       </div>
 
-      <span class="referer-info"
-        >如果您设置了Referer
-        白名单且Referer不允许为空，则通过浏览器直接访问该URL会失败</span
-      >
+      <span class="referer-info">如果您设置了Referer
+        白名单且Referer不允许为空，则通过浏览器直接访问该URL会失败</span>
 
       <div ref="qrcode" id="qrcode"></div>
 
@@ -156,14 +84,7 @@
       </div>
     </el-dialog>
 
-    <el-dialog
-      title="图片预览"
-      :visible.sync="imgPreviewVisible"
-      width="800px"
-      :before-close="handleClose"
-      append-to-body
-      :close-on-click-modal="false"
-    >
+    <el-dialog title="图片预览" :visible.sync="imgPreviewVisible" width="800px" :before-close="handleClose" append-to-body :close-on-click-modal="false">
       <div class="img-preview">
         <img :src="imgPreviewUrl" alt="" />
       </div>
@@ -176,7 +97,7 @@
         </div>
       </div>
     </el-dialog>
-    
+
   </div>
 </template>
 
@@ -200,6 +121,7 @@ export default {
       imgPreviewVisible: false,
       imgPreviewUrl: "",
       downloadAddress: {},
+      tableHeight: 0
     };
   },
   computed: mapState({
@@ -210,11 +132,20 @@ export default {
     CodeEditor: (state) => state.CodeEditor,
   }),
   watch: {},
-  created() {},
+  created() { },
   mounted() {
+    const _this = this
     this.refresh();
+    this.$nextTick(() => {
+      this.getHeight(_this)
+    })
+    window.addEventListener('resize', () => _this.getHeight(_this))
   },
   methods: {
+    getHeight(vm) {
+      let oss = document.querySelector('.web-oss').getBoundingClientRect().height
+      vm.tableHeight = oss - (160)
+    },
     async downloadClick(row) {
       let url = await signatureUrl(row.name);
       download(url, this.dirTitleTool(row));
@@ -447,6 +378,13 @@ export default {
 };
 </script>
 
+<style lang="scss">
+  .el-table th>.cell{
+    font-size: 13px;
+    font-weight: 700;
+    color: #888;
+  }
+</style>
 
 <style scoped lang="scss">
 .rename-path {
@@ -609,6 +547,9 @@ export default {
     span {
       font-size: 13px;
     }
+  }
+  span{
+    font-size: 14px;
   }
   .ace-operation {
     width: 100%;
