@@ -57,10 +57,10 @@ export default {
     uploadList: (state) => state.uploadList,
   }),
   watch: {
-    path(to) {},
   },
   created() {},
   async mounted() {
+    console.log('====');
   },
   methods: {
     diskInfo() {

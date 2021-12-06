@@ -1,12 +1,17 @@
 <template>
-    <Weboss />
+  <Weboss />
 </template>
 
 <script>
 import Weboss from "@/pages/web-oss";
 export default {
   name: "App",
-  mounted() {},
+  created() {
+    this.resetPageFun()
+  },
+  mounted() { 
+    this.resetUserInfoFun()
+  },
   methods: {
     // 更新路由，重置页面
     resetPageFun(to) {

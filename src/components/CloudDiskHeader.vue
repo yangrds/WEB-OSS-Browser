@@ -231,7 +231,7 @@
     </el-dialog>
 
     <el-dialog
-      title="云端裁剪-控制台"
+      title="图片裁剪-控制台"
       width="1400px"
       top="20px"
       class="clip-dialog"
