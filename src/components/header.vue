@@ -98,8 +98,8 @@
         </div>
         <span
           >开源地址:
-          <a href="http://yangrd.com/oss-browser" target="view_window"
-            >http://yangrd.com/oss-browser</a
+          <a href="https://js-vue.com/archives/web-oss-browser" target="view_window"
+            >https://js-vue.com/archives/web-oss-browser</a
           ></span
         >
       </div>
